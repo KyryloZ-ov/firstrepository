@@ -1,4 +1,8 @@
-body {
-    text-align: center;
-    line-height: none;
+td {
+    padding: 15px;
+    border: 1px solid #ff00b7;
+}
+
+table {
+   empty-cells: hide;
 }
