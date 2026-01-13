@@ -1,0 +1,17 @@
+#intro {
+    color: green;
+    font-size: 18px;
+}
+
+.box {
+    background-color: #FFFF00;
+    color: rgb(0, 0, 0);
+    padding: 20px;
+    border: 2px solid black;
+    margin: 15px;
+}
+
+#ssilka:hover {
+    color: hsl(0, 100%, 50%)
+}
+
