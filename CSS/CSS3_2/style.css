@@ -3,6 +3,8 @@ td {
     border: 1px solid #ff00b7;
 }
 
-table {
-   empty-cells: hide;
+h1 {
+        font-family: "Gravitas One", serif;
+        font-weight: 400;
+        font-style: normal;
 }
