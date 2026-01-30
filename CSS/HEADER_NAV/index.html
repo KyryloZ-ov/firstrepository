@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: antiquewhite;
+            margin: 0;
+        }
+
+        header {
+            height: 90px;
+            padding: 0 80px;
+            background-color: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        img {
+            height: 70%;
+        }
+
+        ul {
+            width: 350px;
+            display: flex;
+            justify-content: space-between;
+            list-style-type: none;
+        }
+
+        @keyframes moveBox {
+            0% { 
+                margin: 0px;
+                background-color: black;
+                color: white;
+                font-size: 20px;
+            }
+
+            50% {
+                margin: 120px;
+                background-color: rgb(193, 33, 33);
+                color: white;
+                font-size: 30px;
+            }
+
+            100% {
+                margin: 220px;
+                background-color: rgb(152, 205, 36);
+                color: brown;
+                font-size: 40px;
+            }
+        }
+
+        .box {
+            width: 300px;
+            height: 200px;
+            background-color: black;
+            color: white;
+
+            animation-name: moveBox;
+            animation-delay: 2s;
+            animation-duration: 3s;
+            animation-timing-function: ease-in-out;
+            animation-iteration-count: infinite;
+        }
+
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="Unbenanntes Bild.png" alt="">
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Über uns</a></li>
+                <li><a href="#">Fachbereiche</a></li>
+                <li><a href="#">Service</a></li>
+                <li><a href="#">Kontakt</a></li>
+            </ul>
+            
+    </header>
+    
+    <div class="box">
+        br br patapim
+    </div>
+</body>
+</html>
