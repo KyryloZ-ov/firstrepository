@@ -1,0 +1,238 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+ 
+header {
+    display: flex;
+    height: 80px;
+    background-color: #fff;
+}
+ 
+#logo {
+    margin: 20px 120px;
+}
+ 
+#menu {
+    margin-left: auto;
+    margin-right: 40px;
+    margin-top: 20px;
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+}
+ 
+* {
+    font-family: "Montserrat", sans-serif;
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+ 
+h1 {
+    text-transform: uppercase;
+    font-size: 7rem;
+    line-height: 0.8;
+    font-weight: 700;
+    margin: 20px 0;
+}
+ 
+h2 {
+    font-weight: 700;
+    font-size: 3.4375rem;
+    line-height: 1.1;
+}
+ 
+a {
+    color: #111;
+}
+ 
+.container {
+    width: 1140px;
+    margin: 0 auto;
+}
+ 
+.btn {
+    border-style: solid;
+    border-width: 2px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin: 32px auto 0 0;
+    padding: 16px 46px 17px 45px;
+    text-decoration: none;
+    border-radius: 29px;
+}
+ 
+.card {
+    color: #111;
+    background-color: #fff;
+}
+ 
+@media screen and (max-width: 768px) {
+    .container {
+        width: 90%;
+        margin: 0 auto;
+    }
+ 
+    h2 {
+        font-size: 2.125rem;
+        line-height: 1.1;
+    }
+}
+ 
+header .container {
+    display: flex;
+    height: 80px;
+    justify-content: space-between;
+    align-items: center;
+}
+ 
+header nav {
+    width: 50%;
+    display: block;
+}
+ 
+header nav ul {
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    align-items: center;
+}
+ 
+header nav a {
+    color: #111;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+}
+ 
+header nav a:hover {
+    text-decoration: underline;
+}
+ 
+header .menu-icon {
+    display: none;
+}
+ 
+main {
+    width: 100%;
+    height: calc(100vh - 80px);
+    background-image: url(./assets/images/home-bg.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding-bottom: 100px;
+}
+ 
+main .container {
+    height: calc(100vh - 80px);
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+ 
+main .intro {
+    width: 60%;
+    height: 50vh;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+}
+ 
+main .intro h3 {
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 1.375rem;
+    margin: 0 1px 30px 0;
+}
+ 
+main .intro span {
+    display: block;
+    font-size: 1.125rem;
+    line-height: 1.6;
+}
+ 
+main .intro .title {
+    grid-column: 1/4;
+    margin-bottom: 80px;
+}
+ 
+main .intro .title span:nth-child(1) {
+    text-transform: uppercase;
+    letter-spacing: 12px;
+    font-size: 1.875rem;
+    font-weight: 400;
+    margin: 0 auto 0 0;
+}
+ 
+main .intro .callus a {
+    display: inline-block;
+    margin-bottom: 20px;
+    text-decoration: none;
+    border-bottom: 1px solid #f2952d;
+    transition: all 0.3s ease-in-out;
+}
+ 
+main .intro .callus a:hover {
+    border-color: #111;
+}
+ 
+section.categories {
+    padding: 70px 0 120px 0;
+}
+ 
+section.categories h2 {
+    text-align: center;
+}
+ 
+section.categories .categories-grid {
+    margin-top: 70px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 40px;
+}
+ 
+section.categories .categories-grid .category {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+}
+ 
+section.categories .categories-grid img {
+    height: 65px !important;
+}
+ 
+section.categories .container-grid h4 {
+   margin-bottom: 20px;
+   font-weight: 700;
+   font-size: 1.25rem;
+}
+
+.fresh-breads {
+    padding: 100px 0px;
+    background-image: url(./assets/images/fresh-breads-bg.jpg);
+    background-repeat: no-repeat;
+    background-position: bottom left;
+    background-size: 50%;
+    background-color: #000;
+}
+
+.fresh-breads .container {
+    height: 500px;
+    color: #fff;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.fresh-breads .content {
+    width: 50%;
+}
+
+.fresh-breads .content p {
+    margin: 30px 0;
+}
+
+.fresh-breads .content a {
+
+}
+
+ 
