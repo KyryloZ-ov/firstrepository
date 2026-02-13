@@ -1,16 +1,16 @@
 @charset "UTF-8";
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
- 
+
 header {
     display: flex;
     height: 80px;
     background-color: #fff;
 }
- 
+
 #logo {
     margin: 20px 120px;
 }
- 
+
 #menu {
     margin-left: auto;
     margin-right: 40px;
@@ -19,14 +19,14 @@ header {
     height: 28px;
     object-fit: contain;
 }
- 
+
 * {
     font-family: "Montserrat", sans-serif;
     padding: 0px;
     margin: 0px;
     box-sizing: border-box;
 }
- 
+
 h1 {
     text-transform: uppercase;
     font-size: 7rem;
@@ -34,22 +34,22 @@ h1 {
     font-weight: 700;
     margin: 20px 0;
 }
- 
+
 h2 {
     font-weight: 700;
     font-size: 3.4375rem;
     line-height: 1.1;
 }
- 
+
 a {
     color: #111;
 }
- 
+
 .container {
     width: 1140px;
     margin: 0 auto;
 }
- 
+
 .btn {
     border-style: solid;
     border-width: 2px;
@@ -61,73 +61,73 @@ a {
     text-decoration: none;
     border-radius: 29px;
 }
- 
+
 .card {
     color: #111;
     background-color: #fff;
 }
- 
+
 @media screen and (max-width: 768px) {
     .container {
         width: 90%;
         margin: 0 auto;
     }
- 
+
     h2 {
         font-size: 2.125rem;
         line-height: 1.1;
     }
 }
- 
+
 header .container {
     display: flex;
     height: 80px;
     justify-content: space-between;
     align-items: center;
 }
- 
+
 header nav {
     width: 50%;
     display: block;
 }
- 
+
 header nav ul {
     display: flex;
     justify-content: space-between;
     list-style: none;
     align-items: center;
 }
- 
+
 header nav a {
     color: #111;
     text-decoration: none;
     transition: all 0.3s ease-in-out;
 }
- 
+
 header nav a:hover {
     text-decoration: underline;
 }
- 
+
 header .menu-icon {
     display: none;
 }
- 
+
 main {
     width: 100%;
     height: calc(100vh - 80px);
-    background-image: url(./assets/images/home-bg.jpg);
+    background-image: url(/CSS/Website2/images/home-bg.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     padding-bottom: 100px;
 }
- 
+
 main .container {
     height: calc(100vh - 80px);
     display: flex;
     align-items: center;
     justify-content: flex-end;
 }
- 
+
 main .intro {
     width: 60%;
     height: 50vh;
@@ -135,7 +135,7 @@ main .intro {
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(2, 1fr);
 }
- 
+
 main .intro h3 {
     font-weight: 700;
     letter-spacing: 1px;
@@ -143,18 +143,18 @@ main .intro h3 {
     font-size: 1.375rem;
     margin: 0 1px 30px 0;
 }
- 
+
 main .intro span {
     display: block;
     font-size: 1.125rem;
     line-height: 1.6;
 }
- 
+
 main .intro .title {
     grid-column: 1/4;
     margin-bottom: 80px;
 }
- 
+
 main .intro .title span:nth-child(1) {
     text-transform: uppercase;
     letter-spacing: 12px;
@@ -162,7 +162,7 @@ main .intro .title span:nth-child(1) {
     font-weight: 400;
     margin: 0 auto 0 0;
 }
- 
+
 main .intro .callus a {
     display: inline-block;
     margin-bottom: 20px;
@@ -170,19 +170,19 @@ main .intro .callus a {
     border-bottom: 1px solid #f2952d;
     transition: all 0.3s ease-in-out;
 }
- 
+
 main .intro .callus a:hover {
     border-color: #111;
 }
- 
+
 section.categories {
     padding: 70px 0 120px 0;
 }
- 
+
 section.categories h2 {
     text-align: center;
 }
- 
+
 section.categories .categories-grid {
     margin-top: 70px;
     display: grid;
@@ -190,25 +190,25 @@ section.categories .categories-grid {
     grid-template-rows: repeat(2, 1fr);
     gap: 40px;
 }
- 
+
 section.categories .categories-grid .category {
     display: grid;
     grid-template-columns: 1fr 3fr;
 }
- 
+
 section.categories .categories-grid img {
     height: 65px !important;
 }
- 
+
 section.categories .container-grid h4 {
-   margin-bottom: 20px;
-   font-weight: 700;
-   font-size: 1.25rem;
+    margin-bottom: 20px;
+    font-weight: 700;
+    font-size: 1.25rem;
 }
 
 .fresh-breads {
     padding: 100px 0px;
-    background-image: url(./assets/images/fresh-breads-bg.jpg);
+    background-image: url(images/fresh-breads-bg.jpg);
     background-repeat: no-repeat;
     background-position: bottom left;
     background-size: 50%;
@@ -232,7 +232,67 @@ section.categories .container-grid h4 {
 }
 
 .fresh-breads .content a {
-
+    color: #fff;
 }
 
- 
+.fresh-breads .btn {
+    color: #fff;
+    border-color: #fff;
+    margin-top: 10px;
+    display: inline-block;
+    transition: all 0.3s ease-in-out;
+}
+
+.fresh-breads .btn:hover {
+    color: #000;
+    background-color: #fff;
+}
+
+.our-breads {
+    padding: 70px 0;
+}
+
+.our-breads h2 {
+    margin-bottom: 60px;
+    text-align: center;
+}
+
+.our-breads .our-breads-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+    text-align: center;
+}
+
+.our-breads .our-breads-grid p {
+    margin: 20px 0;
+}
+
+.our-breads p.copyrights {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.card {
+    color: #111;
+    background-color: #fff;
+    box-shadow: 5px 5px 20px 0px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.card .thumbnail {
+    width: 100%;
+    height: 190px;
+    border-radius: 25px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+
+.delicious-baking {
+    padding: 80px 0px;
+    background: rgb(255, 255, 255);
+    background: linear-gradient(0deg, rgb(255, 255, 255));
+}
+
