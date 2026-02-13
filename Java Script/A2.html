@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>A2 – Summe über N Eingaben (for)</title>
+</head>
+<body>
+    <script>// Wie viele Zahlen sollen eingegeben werden?
+  const n = Number(prompt("Wie viele Zahlen willst du summieren?"));
+  let summe = 0;
+ 
+  // for (Start; Bedingung; Schritt) { ... }
+  for (let i = 0; i < n; i++) {
+    const x = Number(prompt("Zahl " + (i + 1) + ":"));
+    if (Number.isNaN(x)) {
+      console.log("Ungültige Eingabe – wird als 0 gezählt.");
+      continue; // diesen Durchlauf überspringen
+    }
+    summe = summe + x;
+  }
+ 
+  console.log("Anzahl Werte:", n);
+  console.log("Summe:", summe);
+  document.body.textContent = "Summe: " + summe + " (über " + n + " Werte)";
+</script>
+</body>
+</html>
