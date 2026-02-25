@@ -8,6 +8,9 @@
     <script>// Wie viele Zahlen sollen eingegeben werden?
   const n = Number(prompt("Wie viele Zahlen willst du summieren?"));
   let summe = 0;
+  let min = Infinity;
+  let max = -Infinity;
+  let count = 0;
  
   // for (Start; Bedingung; Schritt) { ... }
   for (let i = 0; i < n; i++) {
@@ -16,12 +19,40 @@
       console.log("Ungültige Eingabe – wird als 0 gezählt.");
       continue; // diesen Durchlauf überspringen
     }
-    summe = summe + x;
+
+     if (x < 0) {
+      console.log("Negativer Wert ignoriert:", x);
+      continue;
+    }
+
+  summe += x;
+  count++;
+
+  if (x < min) {
+    min = x;
   }
+
+  if (x > max) {
+    max = x;
+  }
+
+  }
+
+ const durchschnitt = count > 0 ? summe / n : 0; 
+
  
-  console.log("Anzahl Werte:", n);
+  console.log("Anzahl gültige Werte:", count);
+  console.log("Minimum:", min);
+  console.log("Maximum:", max);
   console.log("Summe:", summe);
-  document.body.textContent = "Summe: " + summe + " (über " + n + " Werte)";
+  console.log("Durchschnitt:", durchschnitt);
+  document.body.textContent =
+    "Summe: " + summe +
+    " | Durchschnitt: " + durchschnitt +
+    " | Min: " + min +
+    " | Max: " + max +
+    " | gültige Werte: " + count;
+
 </script>
 </body>
 </html>
