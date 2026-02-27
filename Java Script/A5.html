@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aufgabe 5: Gerade Zahlen summieren</title>
+</head>
+<body>
+    
+    <script>
+
+        // Variante 1 
+
+        const n = Number(prompt("Geben sie eine Zahl ein:"));
+        let summe = 0;
+
+        for (let i=1; i<=n; i++){
+            if (i % 2 === 0) {
+                summe += i;
+            }
+        }
+
+        console.log("Die Summe der geraden Zahlen von 1 bis " + n + " ist: " + summe);
+        document.body.textContent = "Die Summe der geraden Zahlen von 1 bis " + n + " ist: " + summe;
+
+        // // Variante 2
+
+        const n2 = Number(prompt("Geben sie eine Zahl ein:"));
+        let summe2 = 0;
+
+        for (let i=2; i<=n2; i+=2){
+            summe2 += i;
+        }
+
+        console.log("Die Summe der geraden Zahlen von 1 bis " + n2 + " ist: " + summe2);
+        document.body.textContent = "Die Summe der geraden Zahlen von 1 bis " + n2 + " ist: " + summe2;
+
+
+
+    </script>
+
+</body>
+</html>

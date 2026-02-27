@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anzahl der Teiler (für Experten)</title>
+</head>
+<body>
+    
+    <script>
+
+        const n =Number(prompt("Geben sie eine Zahl ein:"));
+        let anzahlTeiler = 0;
+
+        for (let i=1; i<=n; i++){
+            if (n % i === 0) {
+                anzahlTeiler++;
+            }
+        }
+
+        console.log("Die Anzahl der Teiler von " + n + " ist: " + anzahlTeiler);
+        document.body.textContent = "Die Anzahl der Teiler von " + n + " ist: " + anzahlTeiler;
+
+    </script>
+</body>
+</html>

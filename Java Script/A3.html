@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aufgabe 3: Summe 1..n (arithmetische Reihe)</title>
+</head>
+<body>
+
+    <script>
+        
+        const n = Number(prompt("Gib eine natürliche Zahl n ein:"));
+        let summe = 0;
+
+        for (let i = 1; i <= n ; i++){
+            summe += i;
+        }
+
+        console.log("Die Summe der Zahlen von 1 bis " + n + " ist: " + summe);
+        document.body.textContent = "Die Summe der Zahlen von 1 bis " + n + " ist: " + summe;
+
+    </script>
+   
+</body>
+</html>

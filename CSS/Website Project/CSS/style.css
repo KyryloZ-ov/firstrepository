@@ -1,0 +1,196 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #282727;
+    color: #eee;
+}
+
+@media (max-width: 700px) {
+    nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+header {
+    background: #000000;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    width: 200px;
+    height: 100px;
+}
+
+.logo img {
+    width: 100%;
+    height: 100%;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav a {
+    color: #eee;
+    text-decoration: none;
+}
+
+nav a.active {
+    border-bottom: 2px solid #e63946;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #000000;
+    margin-top: 40px;
+}
+
+/* =========================================================Startseite========================================================= */
+
+.hello {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 40px;
+    gap: 30px;
+}
+
+.hello-text {
+    flex: 1;
+}
+
+.hello-image img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #e63946;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.features, .teaser {
+    padding: 40px;
+}
+
+.feature-grid, .teaser {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.feature-grid article {
+    flex: 1;
+    min-width: 250px;
+    background: #333;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.teaser-item img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+/* =========================================================Über uns========================================================= */
+
+.page-header {
+    background: #333;
+    padding: 30px;
+    text-align: center;
+    border-radius: 10px;
+    width: 80%;
+    margin: 40px auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;   
+}
+
+.content-two-columns {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    margin-left: 10px;
+    margin-right: 10px;
+}  
+
+.wer-sind-wir, .unsere-mission {
+    flex: 1;
+    min-width: 300px;
+    background: #333;
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.unsere-mission ul {
+    line-height: 1.6;
+}
+
+/* =========================================================Kontakt========================================================= */
+
+.contact-card {
+    max-width: 500px;
+    margin: 0 auto;
+    background: #1c1c1c;
+    padding: 30px;
+    border-radius: 12px;
+    border: 1px solid #333;
+    box-shadow: 0 0 20px rgba(0,0,0,0.4);
+}
+
+.contact-card input,
+.contact-card textarea {
+    width: 95%;
+    padding: 12px;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    background: #111;
+    border: 1px solid #333;
+    border-radius: 6px;
+    color: #eee;
+    font-size: 15px;
+}
+
+.contact-card input:focus,
+.contact-card textarea:focus {
+    border-color: #e63946;
+    outline: none;
+    box-shadow: 0 0 5px #e63946;
+}
+
+.contact-card label {
+    font-size: 14px;
+    color: #bbb;
+}
+
+.btn {
+    padding: 12px 25px;
+    background: #e63946;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn:hover {
+    background: #ff4d5a;
+}
+
+.btn-wrapper {
+    text-align: center;
+}
