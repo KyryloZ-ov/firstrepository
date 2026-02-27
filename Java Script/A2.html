@@ -1,61 +1,68 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
-    <meta charset="UTF-8">
-    <title>A2 – Summe über N Eingaben (for)</title>
+  <meta charset="UTF-8">
+  <title>A2 – Summe über N Eingaben (for)</title>
 </head>
+
 <body>
 
   <script>// Wie viele Zahlen sollen eingegeben werden?
-  
-  const n = Number(prompt("Wie viele Zahlen willst du summieren?"));
-  let summe = 0;
-  let min = Infinity;
-  let max = -Infinity;
-  let count = 0;
- 
-  // for (Start; Bedingung; Schritt) { ... }
-  for (let i = 0; i < n; i++) {
-    const x = Number(prompt("Zahl " + (i + 1) + ":"));
-    if (Number.isNaN(x)) {
-      console.log("Ungültige Eingabe – wird als 0 gezählt.");
-      continue; // diesen Durchlauf überspringen
+
+    const n = Number(prompt("Wie viele Zahlen willst du summieren?"));
+    let summe = 0;
+    let min = Infinity;
+    let max = -Infinity;
+    let count = 0;
+
+    // for (Start; Bedingung; Schritt) { ... }
+    for (let i = 0; i < n; i++) {
+
+      const x = Number(prompt("Zahl " + (i + 1) + ":"));
+
+      if (Number.isNaN(x)) {
+        console.log("Ungültige Eingabe – wird als 0 gezählt.");
+        continue; // diesen Durchlauf überspringen
+      }
+
+      if (x === 0) {
+        console.log("Nullwert ignoriert.");
+        continue;
+      }
+
+      if (x < 0) {
+        console.log("Negativer Wert ignoriert:", x);
+        continue;
+      }
+
+      summe += x;
+      count++;
+
+      if (x < min) {
+        min = x;
+      }
+
+      if (x > max) {
+        max = x;
+      }
+
     }
 
-     if (x < 0) {
-      console.log("Negativer Wert ignoriert:", x);
-      continue;
-    }
+    const durchschnitt = count > 0 ? summe / count : 0;
 
-  summe += x;
-  count++;
 
-  if (x < min) {
-    min = x;
-  }
+    console.log("Anzahl gültige Werte:", count);
+    console.log("Minimum:", min);
+    console.log("Maximum:", max);
+    console.log("Summe:", summe);
+    console.log("Durchschnitt:", durchschnitt);
 
-  if (x > max) {
-    max = x;
-  }
+    document.body.textContent =
+      "Summe: " + summe + " | Durchschnitt: " + durchschnitt + " | Min: " + min + " | Max: " + max + " | gültige Werte: " + count;
 
-  }
-
- const durchschnitt = count > 0 ? summe / n : 0; 
-
- 
-  console.log("Anzahl gültige Werte:", count);
-  console.log("Minimum:", min);
-  console.log("Maximum:", max);
-  console.log("Summe:", summe);
-  console.log("Durchschnitt:", durchschnitt);
-  document.body.textContent =
-    "Summe: " + summe +
-    " | Durchschnitt: " + durchschnitt +
-    " | Min: " + min +
-    " | Max: " + max +
-    " | gültige Werte: " + count;
-
-</script>
+  </script>
 
 </body>
+
 </html>

@@ -1,5 +1,5 @@
 body {
-    margin: 0;
+    margin: 0 auto;
     font-family: Arial, sans-serif;
     background: #282727;
     color: #eee;
@@ -10,7 +10,18 @@ body {
         flex-direction: column;
         gap: 10px;
     }
+
+    .hello {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .content-two-columns {
+        flex-direction: column;
+    }
 }
+
+/* =========================================================Header========================================================= */
 
 header {
     background: #000000;
@@ -45,6 +56,8 @@ nav a.active {
     border-bottom: 2px solid #e63946;
 }
 
+/* =========================================================Footer========================================================= */
+
 footer {
     text-align: center;
     padding: 20px;
@@ -52,7 +65,7 @@ footer {
     margin-top: 40px;
 }
 
-/* =========================================================Startseite========================================================= */
+/* =========================================================Startseite & War Thunder Seiten========================================================= */
 
 .hello {
     display: flex;
@@ -79,11 +92,13 @@ footer {
     border-radius: 5px;
 }
 
-.features, .teaser {
+.features,
+.teaser {
     padding: 40px;
 }
 
-.feature-grid, .teaser {
+.feature-grid,
+.teaser {
     display: flex;
     gap: 20px;
     flex-wrap: wrap;
@@ -104,16 +119,18 @@ footer {
 
 /* =========================================================Über uns========================================================= */
 
-.page-header {
+
+
+.page-header {      
     background: #333;
     padding: 30px;
     text-align: center;
     border-radius: 10px;
-    width: 80%;
+    width: 80%;                             /* page-header gilt für alle Seiten außer Startseite */
     margin: 40px auto;
     display: flex;
     justify-content: center;
-    flex-direction: column;   
+    flex-direction: column;
 }
 
 .content-two-columns {
@@ -122,9 +139,10 @@ footer {
     justify-content: center;
     margin-left: 10px;
     margin-right: 10px;
-}  
+}
 
-.wer-sind-wir, .unsere-mission {
+.wer-sind-wir,
+.unsere-mission {
     flex: 1;
     min-width: 300px;
     background: #333;
@@ -148,7 +166,7 @@ footer {
     padding: 30px;
     border-radius: 12px;
     border: 1px solid #333;
-    box-shadow: 0 0 20px rgba(0,0,0,0.4);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
 }
 
 .contact-card input,
