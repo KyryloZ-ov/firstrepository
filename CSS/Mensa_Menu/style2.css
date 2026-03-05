@@ -32,16 +32,6 @@ body{
     font-weight: bold;
 }
 
-.warm {
-    margin-right: 400px;
-}
-
-.header-text small {
-    display: block;
-    font-size: 14px;
-    font-weight: normal;
-    margin-bottom: 3px;
-}
 
 .stamp {
     position: absolute;
@@ -110,41 +100,80 @@ body{
     height: 100%;
 }
 
-/* =============================================Content============================================= */
-
-.content {
+.wochengericht-item{
     margin-top: 70px;
-    padding: 50px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 150px;
+    gap: 600px;
+
+}
+
+.wochengericht-item .item-title{
+    font-size: 30px;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+}
+
+.wochengericht-item .description{
+    font-style: italic;
+    font-size: 20px;
+}
+
+.item-price{
+    font-size: 30px;
+    font-weight: bold;
+    color: #333;
+    margin-top: 10px;
+}
+
+.sub-header{
+    position: relative;
+    width: 100%;
+    height: 90px;
+    margin-top: 70px;
+    background: linear-gradient(to right,#3a6fa1,#8fb3cf);
+    color: white;
+}
+
+.sub-header-text {
+    font-size: 40px;
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+    padding: 20px;
+}
+
+
+.content-wechselnd-all {
+    margin-top: 30px;
+}
+
+.content-wechselnd {
+    font-size: 28px;
+    display: flex;
+    border-bottom: dotted 2px #000000;
+    margin: 30px 45px;
+}
+
+.tag {
+    width: 300px;
+    height: auto;
+}
+
+.dish {
+    font-style: italic;
+    width: 1100px;
+    height: auto;
     
 }
 
-.content .menu-item {
-    padding: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: dotted 2px #000000;
-    font-size: 25px;
-}
-
-.content .menu-item .price {
-    font-weight: bold;
-    color: #000000;
-    margin-top: 5px;
-}
-
-.content .menu-item.sub-item.feta {
-    border-bottom: none;
-}
-
-/* =============================================footer============================================= */
 
 footer {
-    margin-top: 150px;
+    margin-top: 100px;
     background-color: #ffffff;
     padding: 20px;
     text-align: center;
     color: gray;}
+
