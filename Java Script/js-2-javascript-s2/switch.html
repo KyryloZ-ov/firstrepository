@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Switch</title>
+</head>
+
+<body>
+
+    <script>
+
+        let username = prompt("Geben Sie Ihren Benutzernamen ein:");
+
+        switch (username) {
+
+            case "root":
+
+                document.write("Willkommen, Root!");
+
+                break;
+
+            case "admin":
+
+                document.write("Willkommen, Admin!");
+
+                break;
+
+            case "superadmin":
+
+                let password = prompt("Geben Sie Ihr Passwort ein:");
+
+                if (password === "1234") {
+
+                    alert("Willkommen, Superadmin!");
+
+
+                } else {
+                    document.write("Falsches Passwort!");
+
+                }
+
+                break;
+
+            default:
+
+                document.write("Error: Unbekannter Benutzer!");
+
+                break
+
+        }
+
+    </script>
+
+</body>
+
+</html>

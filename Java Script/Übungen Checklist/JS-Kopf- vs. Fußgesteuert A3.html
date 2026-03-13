@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kopf- und Fußgesteuert</title>
+</head>
+<body>
+    
+    <script>
+
+        let summe = 0;
+        let anzahl = 0;
+
+        // while (true) {
+        //     let eingabe = prompt("Bitte Zahl eingeben (negativ = Ende):");
+
+        //     if (isNaN(eingabe) || eingabe === "" || eingabe === null) {
+        //         alert("Ungültige Eingabe!");
+        //         continue;
+        //     }
+
+        //     let zahl = Number(eingabe);
+
+        //     if (zahl < 0) {
+        //         break;
+        //     }
+
+        //     summe += zahl;
+        //     anzahl++;
+        // }
+
+        // alert("Anzahl gültiger Werte: " + anzahl + "\nSumme: " + summe);
+
+        do{
+
+            let eingabe = prompt("Bitte Zahl eingeben (negativ = Ende):");
+
+            if (isNaN(eingabe) || eingabe === "" || eingabe === null) {
+                alert("Ungültige Eingabe!");
+                continue;
+            }
+
+            let zahl = Number(eingabe);
+
+            if (zahl < 0) {
+                break;
+            }
+
+            summe += zahl;
+            anzahl++;
+
+        }while(true)
+
+        alert("Anzahl gültiger Werte: " + anzahl + "\nSumme: " + summe);
+
+    </script>
+
+</body>
+</html>
