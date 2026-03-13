@@ -19,8 +19,30 @@
         // console.log("a",a)
         // console.log("b",b)
 
-        const nums = [5,7,19];
-        [nums[1], nums[2]] = [nums[2], nums[1]]
+        // const nums = [5,7,19];
+        // [nums[1], nums[2]] = [nums[2], nums[1]]
+
+
+        // function getUser() {
+        //     return ["Anna", "Smith", 10]
+        // }
+        // let name, age
+
+        // [name, ,age] = getUser()
+
+        // console.log(name)
+        // console.log(age)
+        // console.log(name,age)
+
+
+        function getUser() {
+            return ["Anna", "Smith", 10, "Street X Y"]
+        }
+        
+        let name, rest;
+        [name, ...rest] = getUser()
+
+        console.log(age, rest)
     </script>
 </body>
 </html>
