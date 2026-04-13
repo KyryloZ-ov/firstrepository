@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Image Gallery</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="gallery">
+
+    <img id="mainImage" class="main" src="img/pic1.jpg" alt="Main Image">
+
+    <div class="thumbnails">
+        <img class="thumb" src="img/pic1.jpg" alt="">
+        <img class="thumb" src="img/pic2.jpg" alt="">
+        <img class="thumb" src="img/pic3.jpg" alt="">
+        <img class="thumb" src="img/pic4.jpg" alt="">
+        <img class="thumb" src="img/pic5.jpg" alt="">
+    </div>
+    
+</div>
+
+<script>
+    
+    const mainImage = document.getElementById("mainImage");
+
+
+    const thumbnails = document.querySelectorAll(".thumb");
+
+
+    thumbnails.forEach(thumb => {
+        thumb.addEventListener("click", () => {
+            mainImage.src = thumb.src; 
+        });
+    });
+    
+</script>
+</body>
+</html>

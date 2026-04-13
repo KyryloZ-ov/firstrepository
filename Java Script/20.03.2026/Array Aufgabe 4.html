@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        const array = [];
+
+        let n = Number(prompt("Wie viele Zahlen muss in Array sein?"))
+
+        for (let i = 0 ; i < n; i++) {
+            array.push(Number(prompt("Geben Sie Zahl " + (i+1) + ":")))
+        }
+
+        console.log(array)
+        
+        summe = array.reduce((acc, value) => acc+value, 0);
+
+        durchschnitt = array.reduce((acc, value) => acc + value, 0) / array.length
+
+        console.log("Die Summe ist " + summe)
+        console.log("Durchschnitt ist " + durchschnitt)
+    </script>
+
+</body>
+</html>

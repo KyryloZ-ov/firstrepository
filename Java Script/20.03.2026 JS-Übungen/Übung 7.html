@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Übung 7</title>
+</head>
+<body>
+
+    <img id="img" src="images/1.jpg" />
+    <button id="change">Change</button>
+
+    
+    <script>
+
+        const img = document.getElementById("img");
+        const btn = document.getElementById("change");
+
+        btn.addEventListener("click", () => {
+            img.src = "images/2.png";
+        });
+
+    </script>
+
+</body>
+</html>

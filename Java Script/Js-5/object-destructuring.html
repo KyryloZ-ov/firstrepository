@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        // const student ={
+        //     name: "John",
+        //     age: 20      
+        // }
+ 
+        // const {name, age} = student
+ 
+        // console.log("Beispiel 1:")
+        // console.log(age)
+        // console.log(name)
+
+        function f(a,b, ...args) {
+            return {
+                x: args[0],
+                a: a,
+                b: args,
+                c: []
+            }
+        }
+
+        const result1 = f(10,20)
+        const { a: a1, x: x1, b: b1, c: c1} = result1
+
+        console.log("Beispiel 1:")
+        console.log(a1, x1, b1, c1)
+    </script>
+
+</body>
+</html>
