@@ -34,6 +34,16 @@
             mainImage.src = thumb.src; 
         });
     });
+
+    function setVisibility(mainImage) {
+        thumbnails.forEach(thumb => {
+            if (thumb.scr == mainImage.src) {
+                thumb.classList.add("active");
+            } else {
+                thumb.classList.remove("active");
+            }
+        });
+    }
     
 </script>
 </body>

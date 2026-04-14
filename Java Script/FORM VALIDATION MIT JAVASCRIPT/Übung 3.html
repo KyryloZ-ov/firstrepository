@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Übung 3</title>
+</head>
+<body>
+    
+    <form id="form">
+
+        <input type="text" id="name" placeholder="Name"><br>
+        <input type="mail" id="mail" placeholder="E-Mail"><br>
+        <input type="password" id="password" placeholder="Passwort"><br>
+        <button type="submit">Senden</button>
+        
+    </form>
+
+    <p id="msg"></p>
+
+    <script>
+
+        document.getElementById("form").addEventListener("submit", function(e) {
+
+            e.preventDefault();
+
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("mail").value;
+            const password = document.getElementById("password").value;
+
+            if (name === "") {
+                msg.textContent = "Name darf nicht leer sein";
+                return;
+            }
+
+            if (email === "") {
+                msg.textContent = "E-Mail darf nicht leer sein";
+                return;
+            }
+
+            const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (!pattern.test(email)) {
+                msg.textContent = "E-Mail ist nicht gültig";
+                return;
+            }
+
+            if (password.length < 6) {
+                msg.textContent = "Passwort muss mindestens 6 Zeichen haben";
+                return;
+            }
+
+            msg.textContent = "Formular ist korrekt!";
+
+        });
+</script>
+
+
+</body>
+</html>

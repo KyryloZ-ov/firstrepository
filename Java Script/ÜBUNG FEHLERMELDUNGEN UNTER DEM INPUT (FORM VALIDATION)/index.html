@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Übung</title>
+</head>
+<body>
+
+    <form id="form">
+
+        <input type="mail" name="email" id="email" placeholder="E-Mail"><br>
+        <input type="submit" value="Senden">
+
+        <p id="msg"></p>
+
+    </form>
+
+    <script>
+
+        document.getElementById("form").addEventListener("submit", function(e) {
+
+            e.preventDefault();
+
+            const email = document.getElementById("email").value;
+
+            if (email === "") {
+                msg.textContent = "E-Mail ist erforderlich";
+                msg.style.color = "red";
+                return;
+            }
+
+            const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            if (!pattern.test(email)) {
+                msg.textContent = "E-Mail ist ungültig";
+                msg.style.color = "red";
+                return;
+            }
+
+            document.getElementById("msg").textContent = "E-Mail ist gültig!";
+            msg.style.color = "green";
+
+        });
+
+    </script>
+    
+</body>
+</html>
+
+
+
+

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validation</title>
+</head>
+<body>
+    <form id="form">
+        <input type="text" id="name" placeholder="Name">
+        <input type="email" id="email" placeholder="E-Mail">
+        <input type="password" id="password" placeholder="Passwort">
+        <button type="submit">Senden</button>
+    </form>
+
+    <p id="message"></p>
+
+    <script>
+        const form = document.getElementById("form");
+        const message = document.getElementById("message");
+
+        form.addEventListener("submit", function(e) {
+            e.preventDefault();
+
+        const name = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+
+        if (name === "") {
+            message.textContent = "Name darf nicht leer sein";
+            return;
+        }
+
+        if (email === "") {
+            message.textContent = "E-Mail ist erforderlich";
+            return;
+        }
+
+        if (!isEmail(email)) {
+            message.textContent = "E-Mail ist nicht gültig";
+            return;
+        }
+
+        if (password.length < 6) {
+            message.textContent = "Passwort muss mindestens 6 Zeichen haben";
+            return;
+        }
+
+        message.textContent = "Formular ist korrekt!";
+        });
+
+        function isEmail(email) {
+            const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return pattern.test(email);
+        }
+    </script>
+
+</body>
+</html>
