@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Spielfeld – Analyse</title>
+</head>
+<body>
+  <script>
+
+    const feld = [];
+
+    // Spielfeld erzeugen
+    for (let zeile = 0; zeile < 10; zeile++) {
+      feld[zeile] = [];
+
+      for (let spalte = 0; spalte < 10; spalte++) {
+      feld[zeile][spalte] = "~";
+      }
+    }
+
+    // Test: ein Feld als Schiff markieren
+    feld[2][3 ] = "S";
+
+    // Spielfeld ausgeben
+    for (let zeile = 0; zeile < feld.length; zeile++) {
+      console.log(feld[zeile].join(" "));
+    }
+
+    let ausgabe = "";
+
+    for (let zeile = 0; zeile < feld.length; zeile++) {
+      ausgabe += feld[zeile].join(" ") + "\n";
+    }
+
+    document.body.innerHTML = `<pre>${ausgabe}</pre>`;
+
+  </script>
+</body>
+</html>

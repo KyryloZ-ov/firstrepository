@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schachbrett</title>
+</head>
+<body>
+    
+    <script>
+        
+        const board = [];
+
+        const columns = ["A","B","C","D","E","F","G","H"];
+
+        for (let row = 1; row <= 8; row++) {
+            const rowArray = [];
+            for (let col = 0; col < 8; col++) {
+                rowArray.push(columns[col] + row);
+            }
+            board.push(rowArray);
+        }
+
+        for (let i = board.length - 1; i >= 0; i--) {
+            console.log(board[i]);
+        }
+
+
+        console.log(board);
+
+
+    </script>
+
+
+
+</body>
+</html>

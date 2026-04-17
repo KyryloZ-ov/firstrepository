@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Spielfeld – Analyse</title>
+</head>
+<body>
+
+
+  <div id="spielfeld"></div>
+  <div id="meldung"></div>
+
+
+
+
+  <script>
+
+    const spielfeld = [];
+
+    // Spielfeld erzeugen
+    for (let zeile = 0; zeile < 10; zeile++) {
+      spielfeld[zeile] = [];
+
+      for (let spalte = 0; spalte < 10; spalte++) {
+      spielfeld[zeile][spalte] = "~";
+      }
+    }
+
+    // Test: ein Feld als Schiff markieren
+    spielfeld[5][3] = "S";
+
+    
+    function schiessen(spielfeldMatrix, x, y) {
+    if (spielfeldMatrix[y][x] === "S") {
+        spielfeldMatrix[y][x] = "X";
+        document.getElementById("meldung").textContent = "Treffer!";
+    } else {
+        spielfeldMatrix[y][x] = "O";
+        document.getElementById("meldung").textContent = "Wasser!";
+    }
+}
+
+    function zeigeSpielfeld(spielfeldMatrix) {
+      let ausgabe = "";
+
+      for (let zeile = 0; zeile < spielfeldMatrix.length; zeile++) {
+          ausgabe += spielfeldMatrix[zeile].join(" ") + "\n";
+      }
+
+      document.getElementById("spielfeld").innerHTML = `<pre>${ausgabe}</pre>`;
+    }
+
+
+    schiessen(spielfeld, 3, 5);
+    zeigeSpielfeld(spielfeld);
+
+    
+
+    
+
+    
+
+</script>
+</body>
+</html>
