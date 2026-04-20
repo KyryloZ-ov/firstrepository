@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>eLibrary</title>
+  <style>
+    body {max-width: 900px; margin: 20px auto; }
+    #books { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 16px; }
+    .book { border: 1px solid #ccc; padding: 8px; border-radius: 4px; }
+    .book img { max-width: 100%; display: block; margin-bottom: 8px; }
+    #controls { margin: 16px 0; display: flex; gap: 8px; align-items: center; }
+    button:disabled { opacity: 0.5; cursor: not-allowed; }
+  </style>
+</head>
+<body>
+  <h1>eLibrary</h1>
+
+  <div id="controls">
+    <input id="searchInput" type="text" placeholder="Nach Titel suchen..." />
+    <button id="searchButton">Suche</button>
+    <button id="prevButton">Zurück</button>
+    <button id="nextButton">Weiter</button>
+    <span id="pageInfo"></span>
+  </div>
+
+  <div id="books"></div>
+
+  <script>
+    const API_BASE = 'https://gutendex.com/books/';
+    let currentPage = 1;
+    let currentSearch = '';
+
+    const booksContainer = document.getElementById('books');
+    const prevButton = document.getElementById('prevButton');
+    const nextButton = document.getElementById('nextButton');
+    const searchInput = document.getElementById('searchInput');
+    const searchButton = document.getElementById('searchButton');
+    const pageInfo = document.getElementById('pageInfo');
+
+    function buildUrl(page, search) {
+      let url = API_BASE + '?page=' + page;
+      if (search && search.trim() !== '') {
+        url += '&search=' + encodeURIComponent(search.trim());
+      }
+      return url;
+    }
+
+    function loadBooks(page = 1, search = '') {
+      const url = buildUrl(page, search);
+      booksContainer.innerHTML = 'Lade Bücher...';
+
+      fetch(url)
+        .then(response => response.json())
+        .then(data => {
+          currentPage = page;
+          currentSearch = search;
+          renderBooks(data);
+        })
+        .catch(error => {
+          console.error(error);
+          booksContainer.innerHTML = 'Fehler beim Laden der Daten.';
+        });
+    }
+
+    function renderBooks(data) {
+      if (!data.results || data.results.length === 0) {
+        booksContainer.innerHTML = 'Keine Bücher gefunden.';
+        pageInfo.textContent = '';
+        prevButton.disabled = currentPage <= 1;
+        nextButton.disabled = true;
+        return;
+      }
+
+      booksContainer.innerHTML = '';
+
+      data.results.forEach(book => {
+        const div = document.createElement('div');
+        div.className = 'book';
+
+        const title = book.title || 'Ohne Titel';
+        const author = (book.authors && book.authors[0]) ? book.authors[0].name : 'Unbekannter Autor';
+
+        let coverUrl = '';
+        if (book.formats && book.formats['image/jpeg']) {
+          coverUrl = book.formats['image/jpeg'];
+        }
+
+        div.innerHTML = `
+          ${coverUrl ? `<img src="${coverUrl}" alt="${title}">` : ''}
+          <h3>${title}</h3>
+          <p>${author}</p>
+        `;
+
+        booksContainer.appendChild(div);
+      });
+
+      pageInfo.textContent = 'Seite: ' + currentPage;
+      prevButton.disabled = currentPage <= 1;
+      nextButton.disabled = !data.next;
+    }
+
+    nextButton.addEventListener('click', () => {
+      loadBooks(currentPage + 1, currentSearch);
+    });
+
+    prevButton.addEventListener('click', () => {
+      if (currentPage > 1) {
+        loadBooks(currentPage - 1, currentSearch);
+      }
+    });
+
+    searchButton.addEventListener('click', () => {
+      loadBooks(1, searchInput.value);
+    });
+
+    searchInput.addEventListener('keyup', (event) => {
+      if (event.key === 'Enter') {
+        loadBooks(1, searchInput.value);
+      }
+    });
+
+    loadBooks(1, '');
+  </script>
+</body>
+</html>
