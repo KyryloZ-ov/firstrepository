@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Länder und Flaggen</title>
+  <style>
+    body { max-width: 1200px; margin: 20px auto; }
+    #countries { 
+      display: grid; 
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); 
+      gap: 16px; 
+    }
+    .country { 
+      border: 1px solid #ccc; 
+      padding: 10px; 
+      border-radius: 6px; 
+    }
+    .country img { width: 100%; border-radius: 4px; }
+  </style>
+</head>
+<body>
+
+  <h1>Länder und Flaggen</h1>
+
+  <input id="searchInput" type="text" placeholder="Land suchen..." />
+  <button id="searchButton">Suche</button>
+
+  <div id="countries"></div>
+
+  <script>
+    const API_URL = "https://restcountries.com/v3.1/all?fields=name,flags,region,population";
+
+    const countriesContainer = document.getElementById("countries");
+    const searchInput = document.getElementById("searchInput");
+    const searchButton = document.getElementById("searchButton");
+
+    let allCountries = [];
+
+    function loadCountries() {
+      fetch(API_URL)
+        .then(response => response.json())
+        .then(data => {
+          allCountries = data;
+          renderCountries(data);
+        });
+    }
+
+    function renderCountries(list) {
+    
+    
+      countriesContainer.innerHTML = "";
+
+      
+        list.forEach(country => {
+            if (country.region === "Europe" && country.population > 1000000) {
+            const div = document.createElement("div");
+            div.className = "country";
+
+
+            div.innerHTML = `
+            <img src="${country.flags.png}" alt="${country.name.common}">
+            <h3>${country.name.common}</h3>
+            <p>Region: ${country.region}</p>
+            <p>Bevölkerung: ${country.population.toLocaleString()}</p>
+            `;
+        
+            countriesContainer.appendChild(div);
+            }
+        });
+    
+    }
+
+    searchButton.addEventListener("click", () => {
+      const text = searchInput.value.toLowerCase().trim();
+      const filtered = allCountries.filter(c =>
+        c.name.common.toLowerCase().includes(text)
+      );
+      renderCountries(filtered);
+    });
+
+    searchInput.addEventListener("keyup", (event) => {
+      if (event.key === "Enter") {
+        const text = searchInput.value.toLowerCase().trim();
+        const filtered = allCountries.filter(c =>
+          c.name.common.toLowerCase().includes(text)
+        );
+        renderCountries(filtered);
+      }
+    });
+
+    loadCountries();´
+
+  
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Advanced JS – Stunde 1</title>
+</head>
+<body>
+
+<h1>Advanced Übungen – ES6 & Logik</h1>
+
+<script>
+
+// =====================================
+// AUFGABE 1 – Destructuring + Logik
+// =====================================
+
+// Gegeben ist:
+
+const students = [
+  { name: "Max", points: 80 },
+  { name: "Anna", points: 45 },
+  { name: "John", points: 60 }
+];
+
+students.forEach(({ name, points }) => {
+  const status = points >= 50 ? "bestanden" : "nicht bestanden";
+  console.log(`${name} → ${status}`);
+})
+
+
+// Aufgabe:
+// Verwende forEach und Destructuring
+// Für jeden Studenten:
+// - wenn points >= 50 → "bestanden"
+// - sonst → "nicht bestanden"
+
+// Erwartete Ausgabe:
+// Max → bestanden
+// Anna → nicht bestanden
+// John → bestanden
+
+
+// =====================================
+// AUFGABE 2 – Rest + Filter
+// =====================================
+
+// Erstelle eine Funktion:
+
+// filterNumbers(limit, ...numbers)
+
+// Aufgabe:
+// - Verwende den Rest-Operator (...numbers)
+// - Gib nur Zahlen zurück, die größer als "limit" sind
+// - Verwende filter()
+
+// Beispiel:
+// filterNumbers(10, 5, 20, 30, 8)
+// → [20, 30]
+
+function filterNumbers(limit, ...numbers) {
+  return numbers.filter(n => n > limit);
+}
+
+// Beispiel:
+console.log(filterNumbers(10, 5, 20, 30, 8)); 
+// → [20, 30]
+
+
+
+
+// =====================================
+// AUFGABE 3 – Map + Template Literals
+// =====================================
+
+// Gegeben ist:
+
+
+const result = products.map(({ name, price }) => {
+  const teuer = price > 800 ? " (teuer)" : "";
+  return `${name} kostet ${price}€${teuer}`;
+});
+
+console.log(result);
+
+
+// Aufgabe:
+// - Verwende map()
+// - Erstelle ein neues Array mit Texten:
+
+// "Laptop kostet 1000€"
+
+// Bonus:
+// - Wenn price > 800 → füge "(teuer)" hinzu
+
+</script>
+
+</body>
+</html>

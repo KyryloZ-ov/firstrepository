@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <input id="namewechsel" type="text">Name änder
+    <button onclick="pidor.namewechsel()">Wechseln</button>
+    <button onclick="pidor.biertrinken()">Trinken!</button>
+    <button onclick="pidor.geburtstag()">GEBURTSTAG</button>
+    
+    
+    
+    <script>
+
+        class Pidor {
+
+            constructor() {
+
+                this.name = "Daniil";
+                this.status = "nicht betrunken";
+                this.age = 117;
+
+                
+            }
+
+            namewechsel() {
+                
+                this.name = document.getElementById("namewechsel").value;
+                console.log("Neue Name " + this.name);
+                this.anzeigen(this)
+            }
+
+            anzeigen(name) {
+                console.log(this);
+            }
+
+            biertrinken() {
+
+                this.status = "betrunken";
+                this.anzeigen(this)
+
+            }
+
+            geburtstag() {
+
+                this.age++;
+                this.anzeigen(this);
+                    
+            }
+
+            
+
+        }   
+
+
+        let pidor = new Pidor;
+
+        
+        
+
+
+    </script>
+
+
+
+
+</body>
+</html>

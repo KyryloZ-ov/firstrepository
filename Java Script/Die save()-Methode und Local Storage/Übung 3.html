@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Übung 3</title>
+</head>
+<body>
+
+    <script>
+
+        const textApp = {
+            text: "",
+
+            setText: function(value) {
+                this.text = value;
+                this.save();
+            },
+
+            save: function() {
+                localStorage.setItem("text", this.text);
+            }
+        };
+
+        textApp.setText("Hallo Welt");
+
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    
+    
+    <script>
+    
+    const bankAccount = {
+        owner: "Max",
+        balance: 100,
+
+        deposit: function(amount) {
+            this.balance += amount;
+        },
+
+        withdraw: function(amount) {
+            if (amount <= this.balance) {
+                this.balance -= amount;
+            } else {
+                alert("Nicht genug Geld");
+            }
+        }
+    };
+
+</script>
+
+
+
+
+
+</body>
+</html>

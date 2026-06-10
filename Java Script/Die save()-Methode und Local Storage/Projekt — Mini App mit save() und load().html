@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projekt — Mini App mit save() und load()</title>
+</head>
+<body>
+
+    <button onclick="app.increase()">+1</button>
+    <div id="output"></div>
+
+
+    <script>
+
+        const app = {
+            value: 0,
+
+            increase: function() {
+                this.value++;
+                this.save();
+                this.render();
+            },
+
+            save: function() {
+                localStorage.setItem("value", this.value);
+            },
+
+            load: function() {
+                const saved = localStorage.getItem("value");
+                if (saved !== null) {
+                    this.value = Number(saved);
+                }
+            },
+
+            render: function() {
+                document.getElementById("output").textContent = this.value;
+            }
+        };
+ 
+    app.load();
+    app.render();
+
+    </script>
+    
+</body>
+</html>

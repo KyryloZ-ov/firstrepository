@@ -1,65 +1,271 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
     <meta charset="UTF-8">
     <title>Spielfeld – Analyse</title>
+
+    <style>
+        #spielfeld {
+            font-family: monospace;
+            white-space: pre;
+            font-size: 20px;
+
+        }
+
+        #spielfeld2 {
+            font-family: monospace;
+            white-space: pre;
+            font-size: 20px;
+
+        }
+
+        #ganze {
+            display: grid;
+            grid-template-columns: 1.1fr 1fr;
+        }
+    </style>
 </head>
+
 <body>
 
+    <div id="ganze">
 
-  <div id="spielfeld"></div>
-  <div id="meldung"></div>
+        <div>
 
+            <div>
+                <label>Zahl: <input type="number" id="eingabeX"></label>
+                <label>Buchstabe: <input type="text" id="eingabeY"></label>
+                <button onclick="schussAusführen()">Schießen</button>
 
+                <br><br>
+                <label>Zahl: <input type="number" id="shipX"></label>
+                <label>Buchstabe: <input type="text" id="shipY"></label>
+                <label>Länge:
+                    <select id="shipLen">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                    </select>
+                </label>
 
+                <label>Richtung:
+                    <select id="shipDir">
+                        <option value="horizontal">Horizontal</option>
+                        <option value="vertikal">Vertikal</option>
+                    </select>
+                </label>
 
-  <script>
-
-    const spielfeld = [];
-
-    // Spielfeld erzeugen
-    for (let zeile = 0; zeile < 10; zeile++) {
-      spielfeld[zeile] = [];
-
-      for (let spalte = 0; spalte < 10; spalte++) {
-      spielfeld[zeile][spalte] = "~";
-      }
-    }
-
-    // Test: ein Feld als Schiff markieren
-    spielfeld[5][3] = "S";
-
-    
-    function schiessen(spielfeldMatrix, x, y) {
-    if (spielfeldMatrix[y][x] === "S") {
-        spielfeldMatrix[y][x] = "X";
-        document.getElementById("meldung").textContent = "Treffer!";
-    } else {
-        spielfeldMatrix[y][x] = "O";
-        document.getElementById("meldung").textContent = "Wasser!";
-    }
-}
-
-    function zeigeSpielfeld(spielfeldMatrix) {
-      let ausgabe = "";
-
-      for (let zeile = 0; zeile < spielfeldMatrix.length; zeile++) {
-          ausgabe += spielfeldMatrix[zeile].join(" ") + "\n";
-      }
-
-      document.getElementById("spielfeld").innerHTML = `<pre>${ausgabe}</pre>`;
-    }
+                <button onclick="schiffSetzen()">Schiff setzen</button>
+            </div>
 
 
-    schiessen(spielfeld, 3, 5);
-    zeigeSpielfeld(spielfeld);
 
-    
+            <div id="spielfeld"></div>
+            <div id="meldung"></div>
 
-    
+        </div>
 
-    
+    </div>
 
-</script>
-</body>
-</html>
+
+    <script>
+
+        class Feld {
+            constructor(status = "wasser", beschossen = false) {
+                this.status = status;
+                this.beschossen = beschossen;
+            }
+
+            setSchiff() {
+                this.status = "schiff";
+            }
+
+            istWasser() {
+                return this.status === "wasser";
+            }
+
+            istbeschossen() {
+                return this.beschossen;
+            }
+
+            setbeschossen() {
+                this.beschossen = true;
+            }
+        }
+
+        class Spielfield {
+
+            constructor() {
+
+                this.buchstaben = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"];
+                this.feld = [];
+
+                for (let y = 0; y < 10; y++) {
+                    this.feld[y] = [];
+                    for (let x = 0; x < 10; x++) {
+                        this.feld[y][x] = new Feld();
+                    }
+                }
+            }
+
+            parseKoordinate(buchstabe, zahl) {
+                buchstabe = buchstabe.trim().toUpperCase();
+                const y = this.buchstaben.indexOf(buchstabe);
+
+                if (y === -1) {
+                    return null
+                }
+
+                const xNum = parseInt(zahl);
+                
+                if (isNaN(xNum) || xNum < 1 || xNum > 10) {
+                    return null
+                }else{
+                    return { x: xNum - 1, y };
+                }
+            }
+
+            passtInsFeld(x, y, laenge, richtung) {
+
+                if (richtung === "horizontal") {
+                    return x + laenge <= 10;
+                }else{
+                    return y + laenge <= 10;
+                }
+                         
+            }
+
+            istFrei(x, y, laenge, richtung) {
+
+                for (let i = 0; i < laenge; i++) {
+
+                    let xx = x + (richtung === "horizontal" ? i : 0);
+                    let yy = y + (richtung === "vertikal" ? i : 0);
+
+                    if (this.feld[yy][xx].status !== "wasser") {
+                        return false; 
+                    }
+                }
+
+                return true;
+
+            }
+
+            platziereSchiff(x, y, laenge, richtung) {
+
+                for (let i = 0; i < laenge; i++) {
+                    let xx = x + (richtung === "horizontal" ? i : 0);
+                    let yy = y + (richtung === "vertikal" ? i : 0);
+
+                    this.feld[yy][xx].status = "schiff";
+                }
+
+            }
+
+            schiessen(x, y) {
+
+                if (x < 0 || y < 0 || y >= 10 || x >= 10) {
+                    return "Fehler: außerhalb des Spielfelds!";
+                }
+
+                const feld = this.feld[y][x];
+
+                if (feld.istbeschossen()) {
+                    return "Dieses Feld wurde schon beschossen!";
+                }
+
+                feld.setbeschossen();
+
+                return feld.status === "schiff" ? "Treffer!" : "Wasser!";
+
+            }
+
+            zeigeSpielfeld() {
+
+                let ausgabe = "    ";
+
+                for (let x = 1; x <= 10; x++) {
+                    ausgabe += String(x).padStart(3, " ");
+                }
+                ausgabe += "\n";
+
+                ausgabe += "    " + "---".repeat(10) + "\n";
+
+                for (let y = 0; y < 10; y++) {
+                    ausgabe += this.buchstaben[y] + " | ";
+
+                    for (let x = 0; x < 10; x++) {
+                        const feld = this.feld[y][x];
+                        let symbol = feld.beschossen
+                            ? (feld.status === "schiff" ? "X" : "O")
+                            : "~";
+
+                        ausgabe += symbol.padStart(3, " ");
+                    }
+
+                    ausgabe += "\n";
+                }
+
+                document.getElementById("spielfeld").innerHTML = `<pre>${ausgabe}</pre>`;
+                
+            }
+        }
+
+        const spielfeld = new Spielfield();
+
+        // ===================== SCHIFF SETZEN =====================
+
+        function schiffSetzen() {
+
+            const buchstabe = document.getElementById("shipY").value;
+            const zahl = document.getElementById("shipX").value;
+            const laenge = parseInt(document.getElementById("shipLen").value);
+            const richtung = document.getElementById("shipDir").value;
+
+            const koord = spielfeld.parseKoordinate(buchstabe, zahl);
+
+            if (!koord) {
+                document.getElementById("meldung").textContent = "Ungültige Eingabe!";
+                return;
+            }
+
+            const x = koord.x;
+            const y = koord.y;
+
+            if (!spielfeld.passtInsFeld(x, y, laenge, richtung)) {
+                document.getElementById("meldung").textContent = "Schiff passt nicht ins Feld!";
+                return;
+            }
+
+            if (!spielfeld.istFrei(x, y, laenge, richtung)) {
+                document.getElementById("meldung").textContent = "Hier steht schon ein Schiff!";
+                return;
+            }
+
+            spielfeld.platziereSchiff(x, y, laenge, richtung);
+            spielfeld.zeigeSpielfeld();
+            document.getElementById("meldung").textContent = "Schiff gesetzt!";
+        }
+
+        // ===================== SCHIESSEN =====================
+
+        function schussAusführen() {
+
+            const zahl = document.getElementById("eingabeX").value;
+            const buchstabe = document.getElementById("eingabeY").value;
+
+            const koord = spielfeld.parseKoordinate(buchstabe, zahl);
+
+            if (!koord) {
+                document.getElementById("meldung").textContent = "Ungültige Eingabe!";
+                return;
+            }
+
+            const meldung = spielfeld.schiessen(koord.x, koord.y);
+            document.getElementById("meldung").textContent = meldung;
+            spielfeld.zeigeSpielfeld();
+
+        }
+
+    </script>

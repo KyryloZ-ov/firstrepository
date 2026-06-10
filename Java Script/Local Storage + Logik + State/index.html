@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Advanced JS – Stunde 2</title>
+</head>
+
+<body>
+
+    <h1>Advanced Übungen – Storage & Logik</h1>
+
+    <input type="text" id="taskInput" placeholder="Neue Aufgabe">
+    <button onclick="addTask() ">Add Task</button>
+    <button onclick="löschen()">Löschen</button>
+
+    <p id="output" style="white-space: pre-line;"></p>
+
+    <script>
+
+        // =====================================
+        // AUFGABE 4 – To-Do Logik
+        // =====================================
+
+        let tasks = [];
+
+        function addTask() {
+            const value = document.getElementById("taskInput").value;
+
+            if (!tasks.includes(value)) {
+                tasks.push(value);
+                todoApp.save();
+                updateUI();
+            }
+        }
+
+
+
+
+        // Aufgabe:
+        // Implementiere addTask():
+        // - Hole den Wert aus dem Input
+        // - Verhindere doppelte Einträge
+        // - Füge die Aufgabe zum Array hinzu
+        // - Rufe save() auf
+
+
+        // =====================================
+        // AUFGABE 5 – Local Storage (save/load)
+        // =====================================
+
+
+        const todoApp = {
+
+            save() {
+                localStorage.setItem("tasks", JSON.stringify(tasks));
+            },
+
+            load() {
+                const data = localStorage.getItem("tasks");
+                if (data) {
+                    tasks = JSON.parse(data);
+                }
+            }
+
+        };
+
+
+        // const todoApp = {
+
+        //     save() {
+        //         // Aufgabe:
+        //         // Speichere das Array "tasks" im Local Storage
+        //         // (Tipp: JSON.stringify)
+        //     },
+
+        //     load() {
+        //         // Aufgabe:
+        //         // Lade Daten aus dem Local Storage
+        //         // und speichere sie wieder in "tasks"
+        //         // (Tipp: JSON.parse)
+        //     }
+
+        // };
+
+        // // Beim Start der Seite:
+        // todoApp.load();
+
+
+        // =====================================
+        // AUFGABE 6 – Limit + Spread + UI
+        // =====================================
+
+        todoApp.load();
+        updateUI();
+
+        function updateUI() {
+
+            
+            if (tasks.length > 1000) {
+                tasks = [...tasks.slice(1)];
+            }
+
+            
+            document.getElementById("output").textContent = tasks.join("\n");
+        }
+
+        function löschen() {
+            localStorage.removeItem("tasks");
+            tasks = [];
+            updateUI();
+        }
+
+        // Regel:
+        // Maximal 5 Aufgaben erlaubt
+
+        // Aufgabe:
+        // - Wenn mehr als 5 → entferne die erste Aufgabe
+        // - Verwende den Spread-Operator
+        // - Zeige alle Aufgaben im <p id="output"> an
+
+    </script>
+
+</body>
+
+</html>

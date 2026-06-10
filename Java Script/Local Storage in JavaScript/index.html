@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <title>Mini-Bank mit Local Storage</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 400px; margin: 20px auto; }
+    input, button { padding: 8px; margin: 5px 0; width: 100%; box-sizing: border-box; }
+    #balance { font-weight: bold; margin-top: 10px; }
+    #error { color: red; margin-top: 10px; }
+  </style>
+</head>
+<body>
+  <h2>Mini-Bank</h2>
+  <label for="amount">Betrag:</label>
+  <input type="number" id="amount" min="0" step="0.01" placeholder="Betrag eingeben" />
+  <button id="depositBtn">Einzahlen</button>
+  <button id="withdrawBtn">Abheben</button>
+  <div id="balance">Kontostand: 0 €</div>
+  <div id="error"></div>
+
+  <script>
+    const bankAccount = {
+      owner: "Benutzer",
+      balance: 0,
+
+      deposit(amount) {
+        if (amount <= 0) {
+          showError("Der Betrag muss positiv sein");
+          return;
+        }
+        this.balance += amount;
+        this.save();
+        updateBalance();
+        clearError();
+      },
+
+      withdraw(amount) {
+        if (amount <= 0) {
+          showError("Der Betrag muss positiv sein");
+          return;
+        }
+        if (amount > this.balance) {
+          showError("Unzureichendes Guthaben");
+          return;
+        }
+        this.balance -= amount;
+        this.save();
+        updateBalance();
+        clearError();
+      },
+
+      save() {
+        localStorage.setItem("balance", this.balance);
+      },
+
+      load() {
+        const saved = localStorage.getItem("balance");
+        if (saved !== null) {
+          this.balance = Number(saved);
+        }
+      }
+    };
+
+    const amountInput = document.getElementById("amount");
+    const depositBtn = document.getElementById("depositBtn");
+    const withdrawBtn = document.getElementById("withdrawBtn");
+    const balanceDiv = document.getElementById("balance");
+    const errorDiv = document.getElementById("error");
+
+    function updateBalance() {
+      balanceDiv.textContent = `Kontostand: ${bankAccount.balance.toFixed(2)} €`;
+    }
+
+    function showError(message) {
+      errorDiv.textContent = message;
+    }
+
+    function clearError() {
+      errorDiv.textContent = "";
+    }
+
+    depositBtn.addEventListener("click", () => {
+      const amount = parseFloat(amountInput.value);
+      if (isNaN(amount)) {
+        showError("Bitte geben Sie eine gültige Zahl ein");
+        return;
+      }
+      bankAccount.deposit(amount);
+      amountInput.value = "";
+    });
+
+    withdrawBtn.addEventListener("click", () => {
+      const amount = parseFloat(amountInput.value);
+      if (isNaN(amount)) {
+        showError("Bitte geben Sie eine gültige Zahl ein");
+        return;
+      }
+      bankAccount.withdraw(amount);
+      amountInput.value = "";
+    });
+
+    // Kontostand beim Start laden
+    bankAccount.load();
+    updateBalance();
+  </script>
+</body>
+</html>

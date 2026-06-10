@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Smart Task Manager</title>
+    <style>
+        body {
+            font-family: sans-serif;
+        }
+        #warning {
+            color: red;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        #tasks {
+            margin-top: 10px;
+            white-space: pre-line; /* чтобы переносы строк работали */
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Smart Task Manager</h1>
+
+    <input type="text" id="taskInput" placeholder="Neue Aufgabe">
+    <button id="addBtn">Add Task</button>
+
+    <p id="warning"></p>
+    <p id="tasks"></p>
+
+    <script>
+        // Zentrales Array für Aufgaben
+        let tasks = [];
+
+        const todoApp = {
+
+            addTask(text) {
+                const trimmed = text.trim();
+
+                // 1. Leere Eingaben verhindern
+                if (trimmed === "") {
+                    return;
+                }
+
+                // 2. Doppelte Aufgaben verhindern
+                const exists = tasks.some(t => t.text === trimmed);
+                if (exists) {
+                    return;
+                }
+
+                // 3. Priorität bestimmen
+                const priority = trimmed.length > 10 ? "hoch" : "normal";
+
+                // 4. Neue Aufgabe ins Array
+                tasks.push({ text: trimmed, priority });
+
+                // 5. Limit 5 Aufgaben – wenn mehr, älteste löschen
+                if (tasks.length > 5) {
+                    // erste entfernen
+                    tasks = [...tasks.slice(1)];
+                }
+
+                // 6. Speichern & UI aktualisieren
+                this.save();
+                this.updateUI();
+            },
+
+            save() {
+                localStorage.setItem("tasks", JSON.stringify(tasks));
+            },
+
+            load() {
+                const data = localStorage.getItem("tasks");
+                if (data) {
+                    tasks = JSON.parse(data);
+                }
+            },
+
+            updateUI() {
+                const tasksElement = document.getElementById("tasks");
+                const warningElement = document.getElementById("warning");
+
+                // 4. Anzeige der Aufgaben
+                // Format: [hoch] Mathe lernen
+                const lines = tasks.map(t => `[${t.priority}] ${t.text}`);
+                tasksElement.textContent = lines.join("\n");
+
+                // 6. Erweiterte Logik: Warnung bei > 3 "hoch"
+                const highCount = tasks.filter(t => t.priority === "hoch").length;
+                if (highCount > 3) {
+                    warningElement.textContent = "Zu viele wichtige Aufgaben";
+                } else {
+                    warningElement.textContent = "";
+                }
+            }
+
+        };
+
+        // Beim Laden der Seite: Daten holen und UI aktualisieren
+        todoApp.load();
+        todoApp.updateUI();
+
+        // Button-Click → Aufgabe hinzufügen
+        document.getElementById("addBtn").addEventListener("click", () => {
+            const input = document.getElementById("taskInput");
+            todoApp.addTask(input.value);
+            input.value = "";
+        });
+
+        // Optional: Enter-Taste im Input
+        document.getElementById("taskInput").addEventListener("keydown", (e) => {
+            if (e.key === "Enter") {
+                document.getElementById("addBtn").click();
+            }
+        });
+    </script>
+
+</body>
+</html>
